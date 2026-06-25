@@ -3,9 +3,9 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { message, system } = req.body;
+  const { history, system } = req.body;
 
-  if (!message) {
+  if (!history || !history.length) {
     return res.status(400).json({ error: 'Missing message' });
   }
 
@@ -26,7 +26,7 @@ module.exports = async function handler(req, res) {
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 1000,
         system: system || '',
-        messages: [{ role: 'user', content: message }],
+        messages: history,
       }),
     });
 

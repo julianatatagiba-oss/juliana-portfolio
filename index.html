@@ -654,11 +654,14 @@ KEY FACTS:
 
 Be concise (2-4 sentences max). Be honest — if you don't know something specific, say so and suggest contacting Juliana directly.`;
 
+const history = [];
+
 async function sendMessage() {
   const text = input.value.trim();
   if (!text) return;
   input.value = '';
 
+  history.push({ role: 'user', content: text });
   appendMsg(text, 'user');
   const loader = appendLoader();
 
@@ -666,19 +669,22 @@ async function sendMessage() {
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text, system: PROFILE })
+      body: JSON.stringify({ history, system: PROFILE })
     });
     const data = await res.json();
     loader.remove();
     if (!res.ok) {
       appendMsg(`Error ${res.status}: ${data.error || 'Unknown error'}`, 'bot');
+      history.pop();
       return;
     }
     const reply = data.reply || "I couldn't get a response. Please try again.";
+    history.push({ role: 'assistant', content: reply });
     appendMsg(reply, 'bot');
   } catch (err) {
     loader.remove();
     appendMsg(`Connection error: ${err.message}`, 'bot');
+    history.pop();
   }
 }
 
