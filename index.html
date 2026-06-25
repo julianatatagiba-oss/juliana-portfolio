@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juliana Tatagiba — AI Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #1a1a24;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #f0f0f5;
+    --text2: #9090a8;
+    --text3: #5a5a70;
+    --purple: #8b5cf6;
+    --purple2: #a78bfa;
+    --purple3: #6d28d9;
+    --purple-bg: rgba(139, 92, 246, 0.1);
+    --purple-bg2: rgba(139, 92, 246, 0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--purple); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 16px; }
+  .section-title { font-size: 48px; font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 48px; color: var(--text); }
+  .section-title span { color: var(--purple2); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 100px;
+    max-width: 100%;
+    padding-left: 48px; padding-right: 48px;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: center; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--purple-bg); border: 1px solid rgba(139,92,246,0.3);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: 13px; font-weight: 500; color: var(--purple2);
+    margin-bottom: 28px;
+  }
+  .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .hero-name { font-size: 72px; font-weight: 900; letter-spacing: -3px; line-height: 1; margin-bottom: 16px; }
+  .hero-name span { color: var(--purple2); }
+  .hero-role { font-size: 20px; font-weight: 400; color: var(--text2); margin-bottom: 24px; line-height: 1.5; }
+  .hero-desc { font-size: 16px; color: var(--text2); line-height: 1.7; max-width: 520px; margin-bottom: 40px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--purple); color: #fff;
+    border: none; padding: 14px 28px; border-radius: 10px;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { background: var(--purple3); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border2); padding: 14px 28px; border-radius: 10px;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: border-color 0.2s, transform 0.1s;
+  }
+  .btn-secondary:hover { border-color: var(--purple); transform: translateY(-1px); }
+  .hero-socials { display: flex; gap: 12px; margin-top: 32px; }
+  .social-btn {
+    width: 42px; height: 42px; border-radius: 10px;
+    border: 1px solid var(--border2); background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text2); text-decoration: none; transition: all 0.2s;
+    font-size: 18px;
+  }
+  .social-btn:hover { border-color: var(--purple); color: var(--purple2); }
+  .hero-photo { position: relative; }
+  .hero-photo img {
+    width: 100%; border-radius: 20px;
+    border: 1px solid var(--border2);
+    filter: grayscale(15%);
+  }
+  .hero-photo-glow {
+    position: absolute; inset: -2px; border-radius: 22px;
+    background: linear-gradient(135deg, rgba(139,92,246,0.3), transparent 60%);
+    pointer-events: none; z-index: -1;
+  }
+
+  /* ABOUT */
+  .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
+  .metric-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px 20px;
+    transition: border-color 0.2s;
+  }
+  .metric-card:hover { border-color: rgba(139,92,246,0.4); }
+  .metric-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--purple-bg); display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 16px;
+  }
+  .metric-value { font-size: 28px; font-weight: 800; color: var(--text); letter-spacing: -1px; margin-bottom: 4px; }
+  .metric-label { font-size: 13px; color: var(--text2); font-weight: 500; line-height: 1.4; }
+  .skills-label { font-size: 13px; font-weight: 600; color: var(--text2); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .skills-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-tag {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 14px;
+    font-size: 13px; font-weight: 500; color: var(--text2);
+    transition: all 0.2s;
+  }
+  .skill-tag:hover { border-color: var(--purple); color: var(--purple2); }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .project-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 24px;
+    transition: all 0.2s; cursor: default;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-2px); }
+  .project-tag {
+    display: inline-block; padding: 4px 12px; border-radius: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .tag-built { background: var(--purple-bg); color: var(--purple2); }
+  .tag-measured { background: rgba(34,197,94,0.1); color: #4ade80; }
+  .tag-automated { background: rgba(251,191,36,0.1); color: #fbbf24; }
+  .project-title { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 12px; letter-spacing: -0.3px; }
+  .project-desc { font-size: 14px; color: var(--text2); line-height: 1.6; flex: 1; margin-bottom: 20px; }
+  .project-metrics { display: flex; flex-direction: column; gap: 8px; }
+  .project-metric { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .project-metric-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); flex-shrink: 0; }
+  .project-metric span { color: var(--text2); }
+  .project-metric strong { color: var(--text); }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--purple2); font-size: 13px; font-weight: 500;
+    text-decoration: none; margin-top: 20px;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 10px; }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1px; background: var(--border2);
+  }
+  .timeline-item { position: relative; margin-bottom: 48px; }
+  .timeline-dot {
+    position: absolute; left: -37px; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--purple); border: 2px solid var(--bg);
+    box-shadow: 0 0 0 3px rgba(139,92,246,0.2);
+  }
+  .timeline-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px 28px;
+    transition: border-color 0.2s;
+  }
+  .timeline-card:hover { border-color: rgba(139,92,246,0.3); }
+  .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+  .timeline-company { font-size: 18px; font-weight: 700; color: var(--text); }
+  .timeline-period { font-size: 13px; color: var(--text3); font-weight: 500; }
+  .timeline-role { font-size: 14px; font-weight: 600; color: var(--purple2); margin-bottom: 4px; }
+  .timeline-location { font-size: 13px; color: var(--text3); margin-bottom: 16px; }
+  .timeline-desc { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 16px; }
+  .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .timeline-tag {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 10px;
+    font-size: 12px; color: var(--text2); font-weight: 500;
+  }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .edu-list { display: flex; flex-direction: column; gap: 16px; }
+  .edu-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px 22px;
+  }
+  .edu-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .edu-sub { font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+  .edu-year { font-size: 12px; color: var(--purple2); font-weight: 600; }
+  .lang-list { display: flex; flex-direction: column; gap: 20px; }
+  .lang-item { display: block; }
+  .lang-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .lang-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .lang-level { font-size: 13px; color: var(--purple2); font-weight: 500; }
+  .lang-bar { height: 4px; background: var(--bg3); border-radius: 2px; overflow: hidden; }
+  .lang-fill { height: 100%; background: var(--purple); border-radius: 2px; }
+
+  /* CONTACT */
+  #contact { text-align: center; }
+  #contact .section-title { margin-bottom: 16px; }
+  .contact-sub { font-size: 16px; color: var(--text2); margin-bottom: 48px; }
+  .contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 700px; margin: 0 auto 40px; }
+  .contact-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 20px; text-align: center;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .contact-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-2px); }
+  .contact-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--purple-bg); display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin: 0 auto 16px;
+  }
+  .contact-type { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .contact-value { font-size: 13px; color: var(--text2); }
+
+  /* AI CHAT */
+  .chat-widget {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+  }
+  .chat-toggle {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--purple); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: #fff;
+    box-shadow: 0 4px 24px rgba(139,92,246,0.4);
+    transition: transform 0.2s, background 0.2s;
+  }
+  .chat-toggle:hover { transform: scale(1.08); background: var(--purple3); }
+  .chat-panel {
+    position: absolute; bottom: 68px; right: 0;
+    width: 360px; background: var(--bg2);
+    border: 1px solid var(--border2); border-radius: 20px;
+    overflow: hidden; display: none;
+    flex-direction: column;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  }
+  .chat-panel.open { display: flex; }
+  .chat-header {
+    padding: 16px 20px; background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .chat-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--purple-bg); display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: var(--purple2); font-weight: 700;
+  }
+  .chat-header-info p { font-size: 14px; font-weight: 600; color: var(--text); }
+  .chat-header-info span { font-size: 12px; color: #4ade80; }
+  .chat-messages { flex: 1; padding: 16px; overflow-y: auto; max-height: 320px; display: flex; flex-direction: column; gap: 12px; }
+  .chat-msg { max-width: 85%; }
+  .chat-msg.bot { align-self: flex-start; }
+  .chat-msg.user { align-self: flex-end; }
+  .chat-bubble {
+    padding: 10px 14px; border-radius: 14px;
+    font-size: 13px; line-height: 1.5;
+  }
+  .bot .chat-bubble { background: var(--bg3); color: var(--text); border-bottom-left-radius: 4px; }
+  .user .chat-bubble { background: var(--purple); color: #fff; border-bottom-right-radius: 4px; }
+  .chat-input-area {
+    padding: 12px 16px; border-top: 1px solid var(--border);
+    display: flex; gap: 8px; align-items: center;
+  }
+  .chat-input {
+    flex: 1; background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 14px;
+    font-size: 13px; color: var(--text); outline: none;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: var(--purple); }
+  .chat-input::placeholder { color: var(--text3); }
+  .chat-send {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--purple); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 16px; transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .chat-send:hover { background: var(--purple3); }
+  .chat-loading { display: flex; gap: 4px; align-items: center; padding: 10px 14px; }
+  .chat-loading span { width: 6px; height: 6px; border-radius: 50%; background: var(--text3); animation: bounce 1.2s infinite; }
+  .chat-loading span:nth-child(2) { animation-delay: 0.2s; }
+  .chat-loading span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-6px)} }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1196px; margin: 0 auto;
+  }
+  footer p { font-size: 13px; color: var(--text3); }
+  footer span { color: var(--purple2); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    #hero { padding: 80px 24px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-photo { display: none; }
+    .hero-name { font-size: 48px; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: 1fr; }
+    .contact-cards { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">JT<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Open to new opportunities
+      </div>
+      <h1 class="hero-name">Juliana<br><span>Tatagiba</span></h1>
+      <p class="hero-role">AI Product Manager · Growth · Mobile</p>
+      <p class="hero-desc">Senior PM with 10+ years building products that grow. I don't just talk about AI — I ship with it. Currently building Digital Nest using Next.js, Claude Code and Vercel.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get in Touch →</a>
+        <a href="#projects" class="btn-secondary">View Work ↓</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://linkedin.com/in/juliana-tatagiba" target="_blank" class="social-btn" title="LinkedIn">in</a>
+        <a href="mailto:juliana.tatagiba@gmail.com" class="social-btn" title="Email">✉</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="photo.jpg" alt="Juliana Tatagiba">
+      <div class="hero-photo-glow"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About me</div>
+  <h2 class="section-title">Building the future<br>of <span>AI product</span></h2>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-icon">📈</div>
+      <div class="metric-value">+45%</div>
+      <div class="metric-label">Trial-to-Subscription conversion</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">🧪</div>
+      <div class="metric-value">50+</div>
+      <div class="metric-label">A/B experiments designed & analyzed</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">👥</div>
+      <div class="metric-value">1M+</div>
+      <div class="metric-label">Monthly active users across 3 continents</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">🤖</div>
+      <div class="metric-value">+14.9%</div>
+      <div class="metric-label">Net revenue via AI-driven pricing test</div>
+    </div>
+  </div>
+  <div class="skills-label">Skills & Expertise</div>
+  <div class="skills-tags">
+    <span class="skill-tag">AI Product Management</span>
+    <span class="skill-tag">Product Strategy</span>
+    <span class="skill-tag">Growth & Experimentation</span>
+    <span class="skill-tag">A/B Testing</span>
+    <span class="skill-tag">Mobile Apps</span>
+    <span class="skill-tag">Claude & Claude Code</span>
+    <span class="skill-tag">Next.js</span>
+    <span class="skill-tag">Roadmapping</span>
+    <span class="skill-tag">User Research</span>
+    <span class="skill-tag">Conversion Optimization</span>
+    <span class="skill-tag">App Store Connect</span>
+    <span class="skill-tag">Amplitude · Firebase</span>
+    <span class="skill-tag">Cursor · Vercel</span>
+    <span class="skill-tag">Multi-agent Systems</span>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Featured work</div>
+  <h2 class="section-title">What I <span>build</span> &<br>what I <span>measure</span></h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <span class="project-tag tag-built">What I Built</span>
+      <div class="project-title">Digital Nest</div>
+      <div class="project-desc">AI-powered family digital safety platform for parents and children aged 7–16. Full-stack implementation from zero to production — designed, built and shipped solo.</div>
+      <div class="project-metrics">
+        <div class="project-metric"><div class="project-metric-dot"></div><span>Stack: <strong>Next.js · Claude Code · Vercel</strong></span></div>
+        <div class="project-metric"><div class="project-metric-dot"></div><span>Architecture: <strong>multi-agent conversational system</strong></span></div>
+        <div class="project-metric"><div class="project-metric-dot"></div><span>Status: <strong>deployed to production</strong></span></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag tag-measured">What I Measured</span>
+      <div class="project-title">Growth Experimentation at Scale</div>
+      <div class="project-desc">Designed and ran 50+ A/B experiments across acquisition, activation, monetization and retention for consumer mobile apps with 1M+ MAU in the US, UK, Japan and Europe.</div>
+      <div class="project-metrics">
+        <div class="project-metric"><div class="project-metric-dot"></div><span><strong>+45%</strong> Trial-to-Recurring Subscription</span></div>
+        <div class="project-metric"><div class="project-metric-dot"></div><span><strong>+14.9%</strong> net revenue · 99.93% confidence</span></div>
+        <div class="project-metric"><div class="project-metric-dot"></div><span><strong>+12%</strong> key acquisition metric via AI</span></div>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag tag-automated">What I Automated</span>
+      <div class="project-title">Job Search AI System</div>
+      <div class="project-desc">Built a personal AI-powered job search system with specialized agents: achievement extractor, adaptive CV builder, offer scorer and interview simulator — all in Cursor + Claude Code.</div>
+      <div class="project-metrics">
+        <div class="project-metric"><div class="project-metric-dot"></div><span>Modules: <strong>5 specialized skills/agents</strong></span></div>
+        <div class="project-metric"><div class="project-metric-dot"></div><span>Stack: <strong>Claude Code · Cursor · Markdown</strong></span></div>
+        <div class="project-metric"><div class="project-metric-dot"></div><span>Output: <strong>CV adapted per offer in minutes</strong></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <h2 class="section-title">Professional <span>Experience</span></h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div class="timeline-company">AI Product Management — Independent</div>
+          <div class="timeline-period">Apr 2026 – Present</div>
+        </div>
+        <div class="timeline-role">Founder & Builder</div>
+        <div class="timeline-location">📍 Barcelona, Spain</div>
+        <div class="timeline-desc">Designing and building Digital Nest, an AI-powered family digital safety platform — full-stack with Next.js, Vercel and Claude Code, deployed to production. Completing AI Product Manager PRO at The Hero Camp. Developing multi-agent architectures for conversational coaching, including prompt engineering, evaluation pipelines and experimentation design.</div>
+        <div class="timeline-tags">
+          <span class="timeline-tag">AI Product</span>
+          <span class="timeline-tag">Claude Code</span>
+          <span class="timeline-tag">Next.js</span>
+          <span class="timeline-tag">Multi-agent Systems</span>
+          <span class="timeline-tag">Prompt Engineering</span>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div class="timeline-company">Leadtech</div>
+          <div class="timeline-period">Jun 2021 – Mar 2026</div>
+        </div>
+        <div class="timeline-role">Senior Product Manager</div>
+        <div class="timeline-location">📍 Barcelona, Spain</div>
+        <div class="timeline-desc">Led product discovery, experimentation and growth for consumer mobile apps serving 1M+ MAU across North America, Europe and Asia. Spearheaded AI-powered initiatives delivering +12% acquisition improvement. Designed 50+ A/B experiments driving +45% trial-to-subscription, +10% install-to-sale and −5% same-day cancellations. Aligned Engineering, Design, Data, ASO and Marketing stakeholders.</div>
+        <div class="timeline-tags">
+          <span class="timeline-tag">Growth</span>
+          <span class="timeline-tag">A/B Testing</span>
+          <span class="timeline-tag">Mobile Apps</span>
+          <span class="timeline-tag">ASO</span>
+          <span class="timeline-tag">Amplitude</span>
+          <span class="timeline-tag">Firebase</span>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div class="timeline-company">Leadtech</div>
+          <div class="timeline-period">Oct 2015 – Jun 2021</div>
+        </div>
+        <div class="timeline-role">Customer Service · QA Lead · Product Ops</div>
+        <div class="timeline-location">📍 Barcelona, Spain</div>
+        <div class="timeline-desc">Progressively promoted from Customer Service Agent to Quality Assurance Lead and Releases Product Specialist. Built deep foundations in user experience, operational excellence and cross-functional collaboration that directly informed later product work.</div>
+        <div class="timeline-tags">
+          <span class="timeline-tag">Operations</span>
+          <span class="timeline-tag">Quality Assurance</span>
+          <span class="timeline-tag">Release Management</span>
+          <span class="timeline-tag">User Experience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Background</div>
+  <h2 class="section-title">Education &<br><span>Languages</span></h2>
+  <div class="edu-grid">
+    <div>
+      <div class="edu-list">
+        <div class="edu-card">
+          <div class="edu-title">AI Product Manager PRO</div>
+          <div class="edu-sub">The Hero Camp</div>
+          <div class="edu-year">2026</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-title">Digital Marketing</div>
+          <div class="edu-sub">Fundación UNED</div>
+          <div class="edu-year">2020 – 2021</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-title">Software Project Management with Scrum</div>
+          <div class="edu-sub">Dicampus</div>
+          <div class="edu-year">2020</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-title">Bachelor's Degree in Journalism</div>
+          <div class="edu-sub">FACHA (currently UNIFACHA)</div>
+          <div class="edu-year">1999 – 2005</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="lang-list">
+        <div class="lang-item">
+          <div class="lang-header"><span class="lang-name">Portuguese</span><span class="lang-level">Native</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-header"><span class="lang-name">Spanish</span><span class="lang-level">Full professional</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-header"><span class="lang-name">English</span><span class="lang-level">Full professional</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:90%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's talk about<br>your <span>next product</span></h2>
+  <p class="contact-sub">Open to Senior PM, AI PM and Head of Product roles across Europe and remote-global markets.</p>
+  <div class="contact-cards">
+    <a href="mailto:juliana.tatagiba@gmail.com" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-type">Email</div>
+      <div class="contact-value">juliana.tatagiba@gmail.com</div>
+    </a>
+    <a href="https://linkedin.com/in/juliana-tatagiba" target="_blank" class="contact-card">
+      <div class="contact-icon">in</div>
+      <div class="contact-type">LinkedIn</div>
+      <div class="contact-value">juliana-tatagiba</div>
+    </a>
+    <a href="https://juliana-tatagiba.com" class="contact-card">
+      <div class="contact-icon">🌐</div>
+      <div class="contact-type">Portfolio</div>
+      <div class="contact-value">juliana-tatagiba.com</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Juliana Tatagiba. All rights reserved.</p>
+  <p>Made with <span>♥</span> in Barcelona</p>
+</footer>
+
+<!-- AI CHAT WIDGET -->
+<div class="chat-widget">
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="chat-avatar">JT</div>
+      <div class="chat-header-info">
+        <p>Ask Juliana's AI</p>
+        <span>● Online 24/7</span>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        <div class="chat-bubble">Hi! I'm Juliana's AI assistant. Ask me anything about her experience, projects or skills 👋</div>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Ask about Juliana..." />
+      <button class="chat-send" id="chatSend">→</button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chatToggle">✦</button>
+</div>
+
+<script>
+const toggle = document.getElementById('chatToggle');
+const panel = document.getElementById('chatPanel');
+const input = document.getElementById('chatInput');
+const send = document.getElementById('chatSend');
+const messages = document.getElementById('chatMessages');
+
+toggle.addEventListener('click', () => panel.classList.toggle('open'));
+
+const PROFILE = `You are an AI assistant embedded in Juliana Tatagiba's portfolio website. Answer questions about Juliana concisely and professionally.
+
+KEY FACTS:
+- Senior Product Manager, 10+ years experience in mobile apps, growth and AI product
+- Based in Barcelona, open to Europe and remote-global roles
+- Currently: building Digital Nest (AI family safety app) with Next.js + Claude Code + Vercel
+- Completing AI Product Manager PRO at The Hero Camp
+- Previous: Leadtech (2015-2026), Senior PM from 2021
+- Key metrics: +45% trial-to-subscription, +14.9% net revenue (A/B test, 99.93% confidence), +12% acquisition via AI, 50+ A/B experiments, 1M+ MAU
+- Skills: AI Product Management, Growth, A/B Testing, Mobile Apps, Claude Code, Cursor, Next.js, Vercel, Amplitude, Firebase, ASO
+- Languages: Portuguese (native), Spanish (full professional), English (full professional)
+- Prefers: remote or hybrid, product-led companies, AI-native products
+- Email: juliana.tatagiba@gmail.com
+- LinkedIn: linkedin.com/in/juliana-tatagiba
+
+Be concise (2-4 sentences max). Be honest — if you don't know something specific, say so and suggest contacting Juliana directly.`;
+
+async function sendMessage() {
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+
+  appendMsg(text, 'user');
+  const loader = appendLoader();
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text, system: PROFILE })
+    });
+    const data = await res.json();
+    loader.remove();
+    const reply = data.reply || "I couldn't get a response. Please try again.";
+    appendMsg(reply, 'bot');
+  } catch {
+    loader.remove();
+    appendMsg("Sorry, I'm having trouble connecting. Try emailing Juliana directly!", 'bot');
+  }
+}
+
+function appendMsg(text, role) {
+  const div = document.createElement('div');
+  div.className = `chat-msg ${role}`;
+  div.innerHTML = `<div class="chat-bubble">${text}</div>`;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+  return div;
+}
+
+function appendLoader() {
+  const div = document.createElement('div');
+  div.className = 'chat-msg bot';
+  div.innerHTML = `<div class="chat-bubble chat-loading"><span></span><span></span><span></span></div>`;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+  return div;
+}
+
+send.addEventListener('click', sendMessage);
+input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+</script>
+
+</body>
+</html>
