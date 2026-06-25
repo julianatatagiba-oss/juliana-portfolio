@@ -670,11 +670,15 @@ async function sendMessage() {
     });
     const data = await res.json();
     loader.remove();
+    if (!res.ok) {
+      appendMsg(`Error ${res.status}: ${data.error || 'Unknown error'}`, 'bot');
+      return;
+    }
     const reply = data.reply || "I couldn't get a response. Please try again.";
     appendMsg(reply, 'bot');
-  } catch {
+  } catch (err) {
     loader.remove();
-    appendMsg("Sorry, I'm having trouble connecting. Try emailing Juliana directly!", 'bot');
+    appendMsg(`Connection error: ${err.message}`, 'bot');
   }
 }
 
