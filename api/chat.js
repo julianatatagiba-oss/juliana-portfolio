@@ -47,6 +47,11 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Missing message' });
   }
 
+  // Minimum length / meaningful content validation
+  if (userText.length < 3 || !/[a-zA-Z]/.test(userText)) {
+    return res.status(200).json({ reply: "I didn't quite catch that. Could you ask me something about Juliana's experience or skills?" });
+  }
+
   // Length validation
   if (userText.length > 500) {
     return res.status(400).json({ error: 'Message too long. Please keep your question brief.' });
