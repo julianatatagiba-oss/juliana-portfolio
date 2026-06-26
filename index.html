@@ -339,6 +339,54 @@
     .edu-grid { grid-template-columns: 1fr; }
     .section-title { font-size: 36px; }
   }
+
+  /* CASE STUDIES */
+  #case-studies { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+  .cs-intro { font-size: 16px; color: var(--text2); max-width: 600px; margin-bottom: 48px; line-height: 1.7; }
+  .cs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .cs-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 24px;
+    transition: border-color 0.2s;
+  }
+  .cs-card:hover { border-color: rgba(139,92,246,0.3); }
+  .cs-header { display: flex; align-items: center; justify-content: space-between; }
+  .cs-number { font-size: 13px; font-weight: 700; color: var(--purple); letter-spacing: 1px; }
+  .cs-tags { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .cs-tag {
+    background: var(--purple-bg); border: 1px solid rgba(139,92,246,0.2);
+    border-radius: 6px; padding: 3px 10px;
+    font-size: 11px; font-weight: 600; color: var(--purple2);
+  }
+  .cs-title { font-size: 18px; font-weight: 700; color: var(--text); line-height: 1.3; letter-spacing: -0.3px; }
+  .cs-label {
+    display: block; font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--purple); margin-bottom: 10px;
+  }
+  .cs-challenge p, .cs-approach p { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 8px; }
+  .cs-detail { font-size: 13px; color: var(--text3); font-style: italic; }
+  .cs-metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 12px; }
+  .cs-metric {
+    background: var(--bg3); border-radius: 10px; padding: 14px 16px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .cs-metric-val { font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+  .cs-metric-desc { font-size: 12px; color: var(--text2); }
+  .cs-context { font-size: 13px; color: var(--text3); line-height: 1.6; font-style: italic; margin-top: 8px; }
+  .cs-takeaway {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--purple-bg); border-radius: 10px; padding: 14px 16px;
+    border: 1px solid rgba(139,92,246,0.15);
+  }
+  .cs-takeaway span { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .cs-takeaway p { font-size: 13px; color: var(--purple2); line-height: 1.6; font-style: italic; }
+
+  @media (max-width: 900px) {
+    .cs-grid { grid-template-columns: 1fr; }
+    #case-studies { padding: 80px 24px; }
+  }
 </style>
 </head>
 <body>
@@ -348,6 +396,7 @@
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#projects">Work</a>
+    <a href="#case-studies">Case Studies</a>
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
@@ -461,6 +510,151 @@
         <div class="project-metric"><div class="project-metric-dot"></div><span>Output: <strong>CV adapted per offer in minutes</strong></span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies">
+  <div class="section-label">Case Studies</div>
+  <h2 class="section-title">How she thinks &<br><span>how she works</span></h2>
+  <p class="cs-intro">A selection of product initiatives across two mobile apps — each with different constraints, the same approach: research, experiment, measure, iterate.</p>
+
+  <div class="cs-grid">
+
+    <!-- Case 1: Japan -->
+    <div class="cs-card">
+      <div class="cs-header">
+        <div class="cs-number">01</div>
+        <div class="cs-tags">
+          <span class="cs-tag">Growth</span>
+          <span class="cs-tag">Localisation</span>
+          <span class="cs-tag">Experimentation</span>
+        </div>
+      </div>
+      <h3 class="cs-title">Growing a Strategic Market Through Product Localisation</h3>
+      <div class="cs-challenge">
+        <span class="cs-label">Challenge</span>
+        <p>Japan was one of the strongest markets globally for the product category, yet activation, conversion and recurring subscriptions were consistently underperforming. QA and localisation audits found no technical issues — the problem had to be elsewhere.</p>
+      </div>
+      <div class="cs-approach">
+        <span class="cs-label">Approach</span>
+        <p>Partnered with SEM and requested a market audit from Google to understand Japanese consumer psychology and purchasing behaviour. Combined those insights with behavioural analytics to identify hypotheses around pricing presentation, onboarding emotional connection and visual identity. Designed a full experimentation roadmap covering localised onboarding, redesigned pricing pages, different plans, pricing tiers and free trials.</p>
+        <p class="cs-detail">One experiment stood out: shortlisting five onboarding images, a Japanese SEO specialist identified that three were actually Korean models. Her recommended image became the winning variant.</p>
+      </div>
+      <div class="cs-results">
+        <span class="cs-label">Results</span>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-val">+20%</span><span class="cs-metric-desc">Install-to-Sale conversion</span></div>
+          <div class="cs-metric"><span class="cs-metric-val">+30%</span><span class="cs-metric-desc">Recurring subscription</span></div>
+          <div class="cs-metric"><span class="cs-metric-val">+25%</span><span class="cs-metric-desc">Revenue in Japan</span></div>
+          <div class="cs-metric"><span class="cs-metric-val">−10%</span><span class="cs-metric-desc">Churn</span></div>
+        </div>
+      </div>
+      <div class="cs-takeaway">
+        <span>💡</span>
+        <p>The biggest optimisation opportunity wasn't technical — it came from understanding users in their local context.</p>
+      </div>
+    </div>
+
+    <!-- Case 2: Scan Shot -->
+    <div class="cs-card">
+      <div class="cs-header">
+        <div class="cs-number">02</div>
+        <div class="cs-tags">
+          <span class="cs-tag">Product Ownership</span>
+          <span class="cs-tag">Analytics</span>
+          <span class="cs-tag">Delivery</span>
+        </div>
+      </div>
+      <h3 class="cs-title">Scaling a Product With No Handover and a Team Still Learning the Codebase</h3>
+      <div class="cs-challenge">
+        <span class="cs-label">Challenge</span>
+        <p>Took ownership of a mobile scanning app that had spent over a year without a dedicated PM — almost no handover, limited documentation, a confusing backlog and significant functional gaps vs competitors.</p>
+      </div>
+      <div class="cs-approach">
+        <span class="cs-label">Approach</span>
+        <p>Before proposing anything new, created visibility: built a realistic roadmap, benchmarked competitors, identified critical gaps and reconstructed the analytics layer from scratch — auditing events, removing duplicates, creating a consistent taxonomy and documenting the full measurement framework.</p>
+        <p class="cs-detail">When a major OCR-powered search feature required a larger architectural refactor than expected — and an engineer went on long-term sick leave — reorganised releases so the OCR project continued in parallel while A/B tests and quick wins kept shipping continuously.</p>
+      </div>
+      <div class="cs-results">
+        <span class="cs-label">Results</span>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-val">+18%</span><span class="cs-metric-desc">Conversion</span></div>
+          <div class="cs-metric"><span class="cs-metric-val">+20%</span><span class="cs-metric-desc">Revenue</span></div>
+          <div class="cs-metric"><span class="cs-metric-val">−15%</span><span class="cs-metric-desc">Churn</span></div>
+          <div class="cs-metric"><span class="cs-metric-val">+11%</span><span class="cs-metric-desc">Revenue from OCR feature</span></div>
+        </div>
+      </div>
+      <div class="cs-takeaway">
+        <span>💡</span>
+        <p>Experimentation velocity doesn't require perfect conditions — it requires good prioritisation and the discipline to keep shipping while solving harder problems in parallel.</p>
+      </div>
+    </div>
+
+    <!-- Case 3: Camera Translation -->
+    <div class="cs-card">
+      <div class="cs-header">
+        <div class="cs-number">03</div>
+        <div class="cs-tags">
+          <span class="cs-tag">UX Redesign</span>
+          <span class="cs-tag">Retention</span>
+          <span class="cs-tag">Core Experience</span>
+        </div>
+      </div>
+      <h3 class="cs-title">Modernising a Core Product Experience</h3>
+      <div class="cs-challenge">
+        <span class="cs-label">Challenge</span>
+        <p>Camera Translation — one of the app's most used features — had evolved through years of rapid experimentation into a fragmented experience. Two critical pain points emerged from research: users had to manually select the source language before scanning, and the translation frame required constant manual adjustment.</p>
+      </div>
+      <div class="cs-approach">
+        <span class="cs-label">Approach</span>
+        <p>Combined behavioural analytics, user reviews, UX research and customer feedback to define the redesign scope. Migrated to a more capable OCR provider with automatic language detection, expanded language support and a cleaner translation overlay directly on top of the original text — removing friction from the core user journey without disrupting the experimentation cadence.</p>
+      </div>
+      <div class="cs-results">
+        <span class="cs-label">Results</span>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-val">+18%</span><span class="cs-metric-desc">Average app rating</span></div>
+          <div class="cs-metric"><span class="cs-metric-val">−35%</span><span class="cs-metric-desc">Churn among Camera Translation users</span></div>
+        </div>
+      </div>
+      <div class="cs-takeaway">
+        <span>💡</span>
+        <p>As products mature, sustainable growth increasingly comes from improving the quality of core experiences rather than continuously adding new functionality.</p>
+      </div>
+    </div>
+
+    <!-- Case 4: Korea -->
+    <div class="cs-card">
+      <div class="cs-header">
+        <div class="cs-number">04</div>
+        <div class="cs-tags">
+          <span class="cs-tag">Market Expansion</span>
+          <span class="cs-tag">Hypothesis Testing</span>
+          <span class="cs-tag">Asia</span>
+        </div>
+      </div>
+      <h3 class="cs-title">Validating Market Assumptions Across Asian Markets</h3>
+      <div class="cs-challenge">
+        <span class="cs-label">Challenge</span>
+        <p>Following the Japanese market research, South Korea had been treated as a generic Asian market. Deeper analysis suggested user behaviour was actually closer to Western markets — a hypothesis worth testing rather than assuming.</p>
+      </div>
+      <div class="cs-approach">
+        <span class="cs-label">Approach</span>
+        <p>Adapted acquisition and monetisation experiments to reflect Western market dynamics rather than Asian generalisations. Tested pricing, onboarding and messaging strategies aligned with the hypothesis that Korean users behaved differently from the Japanese market.</p>
+      </div>
+      <div class="cs-results">
+        <span class="cs-label">Results</span>
+        <div class="cs-metrics">
+          <div class="cs-metric"><span class="cs-metric-val">~15%</span><span class="cs-metric-desc">Growth in Korean market</span></div>
+        </div>
+        <p class="cs-context">Those gains were later reduced following a marketing budget reallocation towards higher-performing regions — a business decision outside product scope. The experiments, however, successfully validated that market assumptions should always be tested, not inherited.</p>
+      </div>
+      <div class="cs-takeaway">
+        <span>💡</span>
+        <p>Generalising user behaviour across countries is a product risk. The value of this initiative wasn't only the revenue growth — it was proving that assumptions need data to survive.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
