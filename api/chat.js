@@ -36,7 +36,12 @@ module.exports = async function handler(req, res) {
       return res.status(response.status).json({ error: data.error?.message || 'API error' });
     }
 
-    return res.status(200).json({ reply: data.content?.[0]?.text || '' });
+    const reply = data.content?.[0]?.text || '';
+    const lastMessage = history[history.length - 1];
+    console.log('[chat] Q:', lastMessage?.content?.slice(0, 200));
+    console.log('[chat] A:', reply.slice(0, 200));
+
+    return res.status(200).json({ reply });
   } catch (err) {
     return res.status(500).json({ error: 'Internal server error' });
   }
