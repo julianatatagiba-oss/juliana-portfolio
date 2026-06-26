@@ -342,6 +342,19 @@
     .section-title { font-size: 36px; }
   }
 
+  @media (max-width: 600px) {
+    .contact-cards {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 0 24px;
+    }
+    .contact-card {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+
   /* CASE STUDIES */
   #case-studies { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
   .cs-intro { font-size: 16px; color: var(--text2); max-width: 600px; margin-bottom: 48px; line-height: 1.7; }
